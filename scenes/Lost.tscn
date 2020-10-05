@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Lost.gd" type="Script" id=1]
+[ext_resource path="res://scenes/FadeInPlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/font-32.tres" type="DynamicFont" id=3]
+[ext_resource path="res://entities/train/Train.tscn" type="PackedScene" id=4]
+
+[node name="Lost" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FadeInPlayer" parent="." instance=ExtResource( 2 )]
+
+[node name="VSplitContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VSplitContainer"]
+margin_top = 147.0
+margin_right = 928.0
+margin_bottom = 319.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 3 )
+text = "In the end I could not make it alive.
+
+I'm just another carbon based thing stuck in this loop.
+
+What is the meaning of anything ?"
+align = 1
+autowrap = true
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VSplitContainer"]
+margin_top = 470.0
+margin_right = 928.0
+margin_bottom = 508.0
+
+[node name="Retry" type="Button" parent="VSplitContainer/HSplitContainer"]
+margin_left = 183.0
+margin_right = 275.0
+margin_bottom = 38.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 3 )
+text = "Retry"
+
+[node name="Back" type="Button" parent="VSplitContainer/HSplitContainer"]
+margin_left = 597.0
+margin_right = 801.0
+margin_bottom = 38.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 3 )
+text = "Back to menu"
+
+[node name="Train" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1288, 448 )
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/Retry" to="." method="_on_Retry_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/Back" to="." method="_on_Back_pressed"]

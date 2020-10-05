@@ -1,0 +1,139 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Story.gd" type="Script" id=1]
+[ext_resource path="res://scenes/FadeInPlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/font-32.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/controls.png" type="Texture" id=4]
+
+[node name="Controls" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FadeInPlayer" parent="." instance=ExtResource( 2 )]
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Labels" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KeyboardQuit" type="Label" parent="Labels"]
+margin_left = 128.0
+margin_top = 16.0
+margin_right = 256.0
+margin_bottom = 48.0
+custom_fonts/font = ExtResource( 3 )
+text = "Quit"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KeyboardMove" type="Label" parent="Labels"]
+margin_left = 128.0
+margin_top = 96.0
+margin_right = 256.0
+margin_bottom = 128.0
+custom_fonts/font = ExtResource( 3 )
+text = "Move"
+align = 2
+
+[node name="KeyboardUse" type="Label" parent="Labels"]
+margin_left = 680.0
+margin_top = 72.0
+margin_right = 808.0
+margin_bottom = 104.0
+custom_fonts/font = ExtResource( 3 )
+text = "Use"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KeyboardDash" type="Label" parent="Labels"]
+margin_left = 680.0
+margin_top = 152.0
+margin_right = 808.0
+margin_bottom = 184.0
+custom_fonts/font = ExtResource( 3 )
+text = "Dash"
+
+[node name="XBoxDash" type="Label" parent="Labels"]
+margin_left = 776.0
+margin_top = 280.0
+margin_right = 904.0
+margin_bottom = 312.0
+custom_fonts/font = ExtResource( 3 )
+text = "Dash"
+
+[node name="XBoxUse" type="Label" parent="Labels"]
+margin_left = 776.0
+margin_top = 328.0
+margin_right = 904.0
+margin_bottom = 360.0
+custom_fonts/font = ExtResource( 3 )
+text = "Use"
+
+[node name="XBoxQuit" type="Label" parent="Labels"]
+margin_left = 40.0
+margin_top = 256.0
+margin_right = 168.0
+margin_bottom = 288.0
+custom_fonts/font = ExtResource( 3 )
+text = "Quit"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XBoxMove" type="Label" parent="Labels"]
+margin_left = 40.0
+margin_top = 336.0
+margin_right = 168.0
+margin_bottom = 368.0
+custom_fonts/font = ExtResource( 3 )
+text = "Move"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSplitContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VSplitContainer"]
+margin_top = 226.0
+margin_right = 928.0
+margin_bottom = 240.0
+size_flags_vertical = 6
+
+[node name="Button" type="Button" parent="VSplitContainer"]
+margin_left = 426.0
+margin_top = 470.0
+margin_right = 502.0
+margin_bottom = 508.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 3 )
+text = "Back"
+[connection signal="pressed" from="VSplitContainer/Button" to="." method="_on_Button_pressed"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/phone.png" type="Texture" id=1]
+[ext_resource path="res://entities/phone/Phone.gd" type="Script" id=2]
+[ext_resource path="res://interface/Tooltip.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="Phone" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -16 )
+texture = ExtResource( 1 )
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -16 )
+shape = SubResource( 1 )
+
+[node name="Tooltip" parent="." instance=ExtResource( 3 )]
+margin_top = 8.0
+margin_bottom = 64.0
+
+[node name="BottomLabel" parent="Tooltip/VBoxContainer" index="1"]
+text = "call"
+
+[editable path="Tooltip"]

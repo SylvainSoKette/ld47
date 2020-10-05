@@ -1,0 +1,8 @@
+.import/
+*.import
+
+*~
+-autosave.kra
+*.kra
+
+builds/

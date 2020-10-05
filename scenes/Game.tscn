@@ -1,0 +1,129 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scenes/Game.gd" type="Script" id=1]
+[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/train/Train.tscn" type="PackedScene" id=3]
+[ext_resource path="res://interface/Oxygen.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/GUI.gd" type="Script" id=5]
+[ext_resource path="res://interface/Food.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/FadeInPlayer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/theme.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/map.png" type="Texture" id=9]
+[ext_resource path="res://interface/CallHelp.tscn" type="PackedScene" id=10]
+[ext_resource path="res://entities/phone/Phone.tscn" type="PackedScene" id=11]
+[ext_resource path="res://entities/oxygen/OxygenTank.tscn" type="PackedScene" id=12]
+[ext_resource path="res://entities/snack/SnackDropper.tscn" type="PackedScene" id=13]
+
+[node name="Game" type="Node"]
+script = ExtResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -8.0
+autoplay = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 480, 270 )
+texture = ExtResource( 9 )
+
+[node name="Walls" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2( 0, -2 )
+polygon = PoolVector2Array( -24, -32, 992, -32, 1664, 218, 768, 218, 768, 173, 787, 154, 808, 154, 808, 52, 798, 42, 522, 42, 500, 65, 449, 65, 426, 42, 305, 42, 280, 67, 280, 154, 311, 154, 320, 163, 320, 218, -640, 218 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( -640, 256, 512, 256, 512, 344, -640, 344 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2( 0, -2 )
+polygon = PoolVector2Array( 384, 164, 394, 154, 685, 154, 704, 173, 704, 218, 384, 218 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( 576, 256, 1664, 256, 1664, 344, 576, 344 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( 320, 384, 768, 384, 768, 424, 320, 424 )
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2( 0, -1 )
+polygon = PoolVector2Array( 256, 385, -640, 385, -640, 576, 1664, 576, 1664, 384, 832, 384, 832, 425, 887, 425, 896, 434, 896, 502, 885, 513, 721, 513, 679, 471, 627, 471, 585, 513, 239, 513, 221, 495, 189, 495, 171, 513, 128, 513, 128, 439, 142, 425, 256, 425 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 504, 488 )
+
+[node name="TopTrain" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -96, 256 )
+
+[node name="BottomTrain" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 1080, 384 )
+move_right = false
+
+[node name="SnackDropper" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 800, 360 )
+
+[node name="SnackDropper2" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 544, 368 )
+
+[node name="SnackDropper3" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 96, 360 )
+
+[node name="SnackDropper4" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 144, 240 )
+
+[node name="SnackDropper5" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 544, 232 )
+
+[node name="SnackDropper6" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 880, 240 )
+
+[node name="Phone" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 204, 477 )
+
+[node name="OxygenTank3" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 576, 144 )
+
+[node name="OxygenTank4" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 816, 504 )
+oxygen = 100.0
+
+[node name="OxygenTank2" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 768, 64 )
+
+[node name="OxygenTank" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 472, 72 )
+
+[node name="GUI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FadeInPlayer" parent="GUI" instance=ExtResource( 7 )]
+
+[node name="Meters" type="VBoxContainer" parent="GUI"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Oxygen" parent="GUI/Meters" instance=ExtResource( 4 )]
+
+[node name="Food" parent="GUI/Meters" instance=ExtResource( 6 )]
+margin_top = 36.0
+margin_bottom = 68.0
+
+[node name="CallHelp" parent="GUI/Meters" instance=ExtResource( 10 )]
+margin_top = 72.0
+margin_bottom = 104.0
+[connection signal="food_changed" from="YSort/Player" to="GUI" method="_on_Player_food_changed"]
+[connection signal="help_changed" from="YSort/Player" to="GUI" method="_on_Player_help_changed"]
+[connection signal="oxygen_changed" from="YSort/Player" to="GUI" method="_on_Player_oxygen_changed"]

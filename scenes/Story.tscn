@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Story.gd" type="Script" id=1]
+[ext_resource path="res://scenes/FadeInPlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/font-32.tres" type="DynamicFont" id=3]
+
+[node name="Story" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FadeInPlayer" parent="." instance=ExtResource( 2 )]
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VSplitContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VSplitContainer"]
+margin_top = 42.0
+margin_right = 928.0
+margin_bottom = 424.0
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 3 )
+text = "I was just going to SpaceXCon, taking the Hyperloop and all.
+
+And then, like an idiot, I fell out of the train... Don't ask me how I did it.
+
+Fortunately, I'm wearing my fully functional spacesuit replica ! I gotta find a way to survive until they notice I went missing...
+
+They'll come for me. Maybe. I hope."
+align = 1
+autowrap = true
+
+[node name="Button" type="Button" parent="VSplitContainer"]
+margin_left = 426.0
+margin_top = 470.0
+margin_right = 502.0
+margin_bottom = 508.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 3 )
+text = "Back"
+[connection signal="pressed" from="VSplitContainer/Button" to="." method="_on_Button_pressed"]
